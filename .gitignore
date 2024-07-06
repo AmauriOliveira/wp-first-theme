@@ -1,2 +1,9 @@
-wp-content/plugins/wp-file-manager
-wp-content/plugins/wl-api
+wp-content/languages
+wp-content/plugins
+wp-content/index.php
+wp-content/themes/index.php
+wp-content/themes/twentytwentyfour
+wp-content/themes/twentytwentythree
+wp-content/themes/twentytwentytwo
+wp-content/upgrade
+wp-content/uploads
