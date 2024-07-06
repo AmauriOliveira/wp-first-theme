@@ -13,8 +13,9 @@ services:
       WORDPRESS_DB_USER: exampleuser
       WORDPRESS_DB_PASSWORD: examplepass
       WORDPRESS_DB_NAME: exampledb
+      JWT_AUTH_SECRET_KEY: 'DGm 98,x7fi>a/Z8C~Rk5ZM-TWQkA<h+,diPWN:]yn/a`j)]#[YN2pS U*WKYKoN'
     volumes:
-      - ./wp-content:/var/www/html/wp-content
+      - ./html:/var/www/html
 
   db:
     image: mysql:8.0

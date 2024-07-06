@@ -1,4 +1,3 @@
-
 <?php
 
 function register_transaction_custom_post_type() {

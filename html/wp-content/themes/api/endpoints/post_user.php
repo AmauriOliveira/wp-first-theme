@@ -5,7 +5,7 @@ function api_post_user($request) {
   $first_name = sanitize_text_field($request['firstName']);
   $last_name = sanitize_text_field($request['lastName']);
   $email = sanitize_email($request['email']);
-  $password = sanitize_text_field($request['password']);
+  $password = $request['password'];
   $street = sanitize_text_field($request['street']);
   $zipCode = sanitize_text_field($request['zipCode']);
   $number = sanitize_text_field($request['number']);
@@ -32,7 +32,13 @@ function api_post_user($request) {
 
     wp_update_user($response);
 
-
+    update_user_meta( $user_id, 'street', $street );
+    update_user_meta( $user_id, 'zipCode', $zipCode );
+    update_user_meta( $user_id, 'number', $number );
+    update_user_meta( $user_id, 'complement', $complement );
+    update_user_meta( $user_id, 'neighborhood', $neighborhood );
+    update_user_meta( $user_id, 'city', $city );
+    update_user_meta( $user_id, 'uf', $uf );
   } else {
     $response = new WP_Error('error', 'User already exists', ['status' => 409]);
   }
