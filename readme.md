@@ -9,7 +9,7 @@
 ![license](https://img.shields.io/github/license/AmauriOliveira/wp-first-theme)
 ![GitHub repo size](https://img.shields.io/github/repo-size/AmauriOliveira/wp-first-theme)
 
-## :telescope: Overview
+## :telescope: Sobre
 
   [🏠 Homepage](https://github.com/AmauriOliveira/wp-first-theme)
 
@@ -19,7 +19,11 @@ Com esse projeto e outros videos e informações que coletei em fóruns e docume
 
 [@WatchandLearnTutorials](https://www.youtube.com/@WatchandLearnTutorials)
 
-## :computer: Techs
+## Anotações
+
+[Manuais](annotations)
+
+## :computer: Tecnologias
 
 [![JavaScript Badge](https://img.shields.io/badge/-JavaScript-black?style=flat-square&logo=javascript)](#)
 [![PHP Badge](https://img.shields.io/badge/-PHP-777BB4?style=flat-square&logo=php&logoColor=white)](#)
@@ -36,16 +40,16 @@ Com esse projeto e outros videos e informações que coletei em fóruns e docume
 [![GitHub Badge](https://img.shields.io/badge/-GitHub-181717?style=flat-square&logo=github)](#)
 [![VSCode Badge](https://img.shields.io/badge/-VSCode-007ACC?style=flat-square&logo=visual-studio-code&logoColor=white)](#)
 
-## :sparkles: Features
+## :sparkles: Implementações
 
 - sistema de login
 - listagens de produtos
 
-## :bomb: Next steps
+## :bomb: Próximos passos
 
 - [ ] refatorar para o meu uso pessoal
 
-## :star2: Contributing
+## :star2: Contribuição
 
 Contributions, issues and feature requests are welcome!
 
@@ -55,7 +59,7 @@ Contributions, issues and feature requests are welcome!
 
 Feel free to check [issues page](https://github.com/AmauriOliveira/wp-first-theme/issues). You can also take a look at the contributing guide.
 
-## :bow: Author
+## :bow: Autor
 
 ### Amauri Antonio de Oliveira
 
@@ -63,7 +67,7 @@ Feel free to check [issues page](https://github.com/AmauriOliveira/wp-first-them
 - GitHub: [@AmauriOliveira](https://github.com/AmauriOliveira)
 - LinkedIn: [@amauri-oliveira-058066192](https://linkedin.com/in/amauri-oliveira-058066192)
 
-## :books: License
+## :books: Licença
 
 Copyright © 2020 Amauri Antonio de Oliveira
 This project is [MIT](license) licensed.
