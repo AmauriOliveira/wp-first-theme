@@ -5,14 +5,15 @@ function api_get_user() {
   $user = wp_get_current_user();
   $user_id = $user->ID;
 
-  if ($user_id) {
+  if ($user_id > 0) {
     $meta = get_user_meta($user_id);
 
     $response = [
       'id' => $user->user_login,
-      'displayName' => $user->display_name,
-      'firstName' => $user->first_name,
-      'lastName' => $user->last_name,
+      'display_name' => $user->display_name,
+      'first_name' => $user->first_name,
+      'last_name' => $user->last_name,
+      'nick_name'=> $user->first_name,
       'email' => $user->user_email,
       'avatar' => get_avatar_url($user_id),
       'role' => $user->roles[0],

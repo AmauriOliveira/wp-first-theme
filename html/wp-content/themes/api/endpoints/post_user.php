@@ -2,10 +2,11 @@
 
 function api_post_user($request) {
 
-  $first_name = sanitize_text_field($request['firstName']);
-  $last_name = sanitize_text_field($request['lastName']);
-  $email = sanitize_email($request['email']);
-  $password = $request['password'];
+  $first_name = sanitize_text_field($request['first_name']);
+  $last_name = sanitize_text_field($request['last_name']);
+  $user_email = sanitize_email($request['user_email']);
+  $user_pass = $request['user_pass'];
+  $description = sanitize_text_field($request['description']);
   $street = sanitize_text_field($request['street']);
   $zipCode = sanitize_text_field($request['zipCode']);
   $number = sanitize_text_field($request['number']);
@@ -14,11 +15,11 @@ function api_post_user($request) {
   $city = sanitize_text_field($request['city']);
   $uf = sanitize_text_field($request['uf']);
 
-  $user_exists = username_exists($email);
-  $email_exists = email_exists($email);
+  $user_exists = username_exists($user_email);
+  $email_exists = email_exists($user_email);
 
-  if (!$user_exists && !$email_exists && $email && $password) {
-    $user_id = wp_create_user($email, $password, $email);
+  if (!$user_exists && !$email_exists && $user_email && $user_pass) {
+    $user_id = wp_create_user($user_email, $user_pass, $user_email);
 
     $response = [
       'ID' => $user_id,
@@ -26,8 +27,8 @@ function api_post_user($request) {
       'first_name' => $first_name,
       'last_name'=> $last_name,
       'role' => 'subscriber',
-      'nickname'=> $first_name,
-      'description' => 'football player', /* TODO: Add description */
+      'nick_name'=> $first_name,
+      'description' => $description,
     ];
 
     wp_update_user($response);
