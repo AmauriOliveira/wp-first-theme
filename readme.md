@@ -21,7 +21,7 @@ Com esse projeto e outros videos e informações que coletei em fóruns e docume
 
 ## Anotações
 
-[Manuais](annotations)
+[Manuais](annotations.md)
 
 ## :computer: Tecnologias
 
@@ -70,4 +70,4 @@ Feel free to check [issues page](https://github.com/AmauriOliveira/wp-first-them
 ## :books: Licença
 
 Copyright © 2020 Amauri Antonio de Oliveira
-This project is [MIT](license) licensed.
+This project is [MIT](license.md) licensed.
