@@ -1,7 +1,7 @@
 <?php
 
 function register_product_custom_post_type() {
-  register_post_type('produto', array(
+  register_post_type('product', array(
     'label' => 'Produto',
     'description'=> 'Produto',
     'public'=> true,

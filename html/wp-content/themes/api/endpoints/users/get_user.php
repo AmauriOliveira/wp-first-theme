@@ -27,7 +27,7 @@ function api_get_user() {
       'uf' => $meta['uf'][0],
     ];
   } else {
-    $response = new WP_Error('error', 'Unauthorized', ['status' => 401]);
+    $response = new WP_Error('error', 'Unauthorized: You must send the JWT token.', ['status' => 401]);
   }
 
   return rest_ensure_response($response);

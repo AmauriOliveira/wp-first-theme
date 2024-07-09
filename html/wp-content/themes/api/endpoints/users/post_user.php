@@ -41,7 +41,7 @@ function api_post_user($request) {
     update_user_meta( $user_id, 'city', $city );
     update_user_meta( $user_id, 'uf', $uf );
   } else {
-    $response = new WP_Error('error', 'User already exists', ['status' => 409]);
+    $response = new WP_Error('error', 'Conflict: User already exists', ['status' => 409]);
   }
 
   return rest_ensure_response($response);

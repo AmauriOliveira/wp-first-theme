@@ -46,10 +46,10 @@ function api_put_user($request) {
       // remove a senha do usuário do response
       unset($response['user_pass']);
     } else {
-      $response = new WP_Error('error', 'User already exists', ['status' => 409]);
+      $response = new WP_Error('error', 'Conflict: User already exists', ['status' => 409]);
     }
   } else {
-    $response = new WP_Error('error', 'Unauthorized', ['status' => 401]);
+    $response = new WP_Error('error', 'Unauthorized: You must send the JWT token.', ['status' => 401]);
   }
 
   return rest_ensure_response($response);
