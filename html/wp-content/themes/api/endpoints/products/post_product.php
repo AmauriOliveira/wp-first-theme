@@ -19,6 +19,7 @@ function api_post_product($request) {
         'post_status' => 'publish',
         'post_type' => 'product',
         'meta_input' => [
+          'name' => $name,
           'description' => $description,
           'price' => $price,
           'post_user_id' => $post_user_id,
