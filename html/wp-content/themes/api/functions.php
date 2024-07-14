@@ -11,7 +11,7 @@ require_once($templete_dir.'/endpoints/users/put_user.php');
 require_once($templete_dir.'/endpoints/products/get_product.php');
 require_once($templete_dir.'/endpoints/products/post_product.php');
 //require_once($templete_dir.'/endpoints/products/put_product.php');
-//require_once($templete_dir.'/endpoints/products/delete_product.php');
+require_once($templete_dir.'/endpoints/products/delete_product.php');
 
 
 function get_product_by_slug($slug) {
