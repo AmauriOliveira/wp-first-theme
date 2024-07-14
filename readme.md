@@ -44,10 +44,17 @@ Com esse projeto e outros videos e informações que coletei em fóruns e docume
 
 - sistema de login
 - listagens de produtos
+- registro de transações
 
 ## :bomb: Próximos passos
 
 - [ ] refatorar para o meu uso pessoal
+  - [ ] Criar endpoint para retornar se o user logado é dono do produto
+    > Deve se retornar se o usuário logado pode fazer a edição ou deleção do produto, para assim fazer um tratamento no frontend, talvez usar jwt
+  - [ ] Adicionar o PUT product
+    > Deve se verificar se quem está editando é o dono do produto ou admin
+  - [ ] Adicionar o delete attached media
+    > Deve se verificar se a mídia pertence ao produto que está sendo editado no momento e se quem está apagando é o dono do post ou admin
 
 ## :star2: Contribuição
 

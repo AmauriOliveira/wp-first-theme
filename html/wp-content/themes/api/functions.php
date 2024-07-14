@@ -13,6 +13,9 @@ require_once($templete_dir.'/endpoints/products/post_product.php');
 //require_once($templete_dir.'/endpoints/products/put_product.php');
 require_once($templete_dir.'/endpoints/products/delete_product.php');
 
+//require_once($templete_dir.'/endpoints/transaction/get_transaction.php');
+require_once($templete_dir.'/endpoints/transaction/post_transaction.php');
+
 
 function get_product_by_slug($slug) {
   $query =new WP_Query([
