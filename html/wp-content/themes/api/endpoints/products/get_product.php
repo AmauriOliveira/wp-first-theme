@@ -1,12 +1,18 @@
 <?php
 
+/**
+ * Retrieves the product scheme for a given slug.
+ *
+ * @param string $slug The slug of the product.
+ * @return array|WP_Error The product scheme, or a WP_Error object if the product is not found.
+ */
 function product_scheme($slug) {
-  $post_id = get_product_by_slug($slug);
+  $product_id = get_product_by_slug($slug);
 
-  if ($post_id) {
-    $post_meta = get_post_meta($post_id);
+  if ($product_id) {
+    $post_meta = get_post_meta($product_id);
 
-    $imgs = get_attached_media('image', $post_id);
+    $imgs = get_attached_media('image', $product_id);
     $imgs_arr = [];
 
     if ($imgs) {
