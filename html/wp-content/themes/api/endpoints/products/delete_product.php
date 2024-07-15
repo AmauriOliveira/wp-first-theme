@@ -1,9 +1,4 @@
 <?php
-
-function delete_product_rest_return($response) {
-  return rest_ensure_response($response);
-}
-
 function api_delete_product($request) {
   $slug = $request['slug'];
   $product_id = get_product_by_slug($slug);
@@ -14,21 +9,21 @@ function api_delete_product($request) {
 
   // Check if the user is logged in
   if ($user_id === 0) {
-    return delete_product_rest_return(
+    return rest_ensure_return(
       new WP_Error('error', 'Unauthorized: You must send the JWT token.', ['status' => 401]),
     );
   }
 
   // Check if the user is the author of the product or an admin or if the product doesn't exist
   if ($user_id !== $author_id && !$is_admin_role && !!$author_id) {
-    return delete_product_rest_return(
+    return rest_ensure_return(
       new WP_Error('error', 'Forbidden: You must be the author of the product to delete it.', ['status' => 403]),
     );
   }
 
   // Check if the product exists
   if (!$product_id) {
-    return delete_product_rest_return(
+    return rest_ensure_return(
       new WP_Error('error', 'Product not found.', ['status' => 404]),
     );
   }
@@ -44,7 +39,7 @@ function api_delete_product($request) {
 
   $response = wp_delete_post($product_id, true);
 
-  return delete_product_rest_return($response);
+  return rest_ensure_return($response);
 }
 
 function register_api_delete_product()
