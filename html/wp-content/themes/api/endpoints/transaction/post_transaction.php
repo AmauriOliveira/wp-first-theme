@@ -1,11 +1,12 @@
 <?php
+
 function api_post_transaction($request) {
   $user = wp_get_current_user();
   $user_id = $user->ID;
   $not_sold = $request['product']['not_sold'] === 'false';
 
   if ($user_id === 0) {
-    return rest_ensure_return(
+    return rest_ensure_response(
       new WP_Error('error', 'Unauthorized: You must send the JWT token.', ['status' => 401]),
     );
   }
@@ -21,7 +22,7 @@ function api_post_transaction($request) {
   update_post_meta($product_id, 'sold','true');
 
   if (!$buyer_id || !$seller_id || empty($address) || empty($product) || !$product_name || !$product_slug) {
-    return rest_ensure_return(
+    return rest_ensure_response(
       new WP_Error('error', 'Conflict: buyer_id, seller_id, address, product, product_name, product_slug is required.', ['status' => 409]),
     );
   }
@@ -42,7 +43,7 @@ function api_post_transaction($request) {
     ],
   ];
 
-  return rest_ensure_return(wp_insert_post($transaction));
+  return rest_ensure_response(wp_insert_post($transaction));
 }
 
 function register_api_post_transaction()

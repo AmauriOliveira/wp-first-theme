@@ -9,35 +9,36 @@
 function product_scheme($slug) {
   $product_id = get_product_by_slug($slug);
 
-  if ($product_id) {
-    $post_meta = get_post_meta($product_id);
-
-    $imgs = get_attached_media('image', $product_id);
-    $imgs_arr = [];
-
-    if ($imgs) {
-      foreach ($imgs as $key => $value) {
-        $imgs_arr[$key] = [
-          'title' => $value->post_name,
-          'urls' => $value->guid,
-        ];
-      }
-    }
-
-    $response = [
-      'id' => $slug,
-      'photo' => $imgs_arr,
-      'name' => $post_meta['name'][0],
-      'description' => $post_meta['description'][0],
-      'price' => $post_meta['price'][0],
-      'post_user_id' => $post_meta['post_user_id'][0],
-      'sold' => $post_meta['sold'][0],
-
-    ];
-
-  } else {
-    $response = new WP_Error('error', "Not found: Product with slug $slug not found", ['status' => 404]);
+  if (!$product_id) {
+    return rest_ensure_response(
+      new WP_Error('error', "Not found: Product with slug $slug not found", ['status' => 404]),
+    );
   }
+
+  $post_meta = get_post_meta($product_id);
+
+  $imgs = get_attached_media('image', $product_id);
+  $imgs_arr = [];
+
+  if ($imgs) {
+    foreach ($imgs as $key => $value) {
+      $imgs_arr[$key] = [
+        'title' => $value->post_name,
+        'urls' => $value->guid,
+      ];
+    }
+  }
+
+  $response = [
+    'id' => $slug,
+    'photo' => $imgs_arr,
+    'name' => $post_meta['name'][0],
+    'description' => $post_meta['description'][0],
+    'price' => $post_meta['price'][0],
+    'post_user_id' => $post_meta['post_user_id'][0],
+    'sold' => $post_meta['sold'][0],
+
+  ];
 
   return $response;
 }

@@ -18,31 +18,40 @@ function api_post_user($request) {
   $user_exists = username_exists($user_email);
   $email_exists = email_exists($user_email);
 
-  if (!$user_exists && !$email_exists && $user_email && $user_pass) {
-    $user_id = wp_create_user($user_email, $user_pass, $user_email);
 
-    $response = [
-      'ID' => $user_id,
-      'display_name' => $first_name . ' ' . $last_name,
-      'first_name' => $first_name,
-      'last_name'=> $last_name,
-      'role' => 'subscriber',
-      'nick_name'=> $first_name,
-      'description' => $description,
-    ];
-
-    wp_update_user($response);
-
-    update_user_meta( $user_id, 'street', $street );
-    update_user_meta( $user_id, 'zipCode', $zipCode );
-    update_user_meta( $user_id, 'number', $number );
-    update_user_meta( $user_id, 'complement', $complement );
-    update_user_meta( $user_id, 'neighborhood', $neighborhood );
-    update_user_meta( $user_id, 'city', $city );
-    update_user_meta( $user_id, 'uf', $uf );
-  } else {
-    $response = new WP_Error('error', 'Conflict: User already exists', ['status' => 409]);
+  if (empty($first_name) || empty($last_name) || empty($user_email) || empty($user_pass)) {
+    return rest_ensure_response(
+      new WP_Error('error', 'Conflict: First name, last name, user email, user pass is required.', ['status' => 409]),
+    );
   }
+
+  if ($user_exists || $email_exists) {
+    return rest_ensure_response(
+      $response = new WP_Error('error', 'Conflict: User already exists', ['status' => 409]),
+    );
+  }
+
+  $user_id = wp_create_user($user_email, $user_pass, $user_email);
+
+  $response = [
+    'ID' => $user_id,
+    'display_name' => $first_name . ' ' . $last_name,
+    'first_name' => $first_name,
+    'last_name'=> $last_name,
+    'role' => 'subscriber',
+    'nick_name'=> $first_name,
+    'description' => $description,
+  ];
+
+  wp_update_user($response);
+
+  update_user_meta( $user_id, 'street', $street );
+  update_user_meta( $user_id, 'zipCode', $zipCode );
+  update_user_meta( $user_id, 'number', $number );
+  update_user_meta( $user_id, 'complement', $complement );
+  update_user_meta( $user_id, 'neighborhood', $neighborhood );
+  update_user_meta( $user_id, 'city', $city );
+  update_user_meta( $user_id, 'uf', $uf );
 
   return rest_ensure_response($response);
 }
