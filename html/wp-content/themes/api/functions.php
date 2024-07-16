@@ -32,4 +32,19 @@ function expire_token() {
   return time() + 60 * 60 * 3;
 }
 
+function customize_screen_lost_password() {
+  ?>
+    <style type="text/css">
+      #login h1 a {
+        background-image: none;
+      }
+
+      #backtoblog {
+        display: none;
+      }
+    </style>
+  <?php
+}
+
 add_action('jwt_auth_expire', 'expire_token');
+add_action('login_enqueue_scripts', 'customize_screen_lost_password');
