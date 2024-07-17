@@ -17,7 +17,7 @@ require_once($templete_dir.'/endpoints/products/delete_product.php');
 require_once($templete_dir.'/endpoints/transaction/get_transaction.php');
 require_once($templete_dir.'/endpoints/transaction/post_transaction.php');
 
-function get_product_by_slug($slug) {
+function get_product_id_by_slug($slug) {
   $query =new WP_Query([
     'name' => $slug,
     'post_type' => 'product',

@@ -18,7 +18,7 @@ function api_post_transaction($request) {
   $address = $request['address'] ?: null;
   $product = $request['product'] ?: null;
 
-  $product_id = get_product_by_slug($product_slug);
+  $product_id = get_product_id_by_slug($product_slug);
   update_post_meta($product_id, 'sold','true');
 
   if (!$buyer_id || !$seller_id || empty($address) || empty($product) || !$product_name || !$product_slug) {

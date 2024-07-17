@@ -7,7 +7,7 @@
  * @return array|WP_Error The product scheme, or a WP_Error object if the product is not found.
  */
 function product_scheme($slug) {
-  $product_id = get_product_by_slug($slug);
+  $product_id = get_product_id_by_slug($slug);
 
   if (!$product_id) {
     return rest_ensure_response(

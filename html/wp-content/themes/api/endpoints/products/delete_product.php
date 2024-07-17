@@ -2,7 +2,7 @@
 
 function api_delete_product($request) {
   $slug = $request['slug'];
-  $product_id = get_product_by_slug($slug);
+  $product_id = get_product_id_by_slug($slug);
   $user = wp_get_current_user();
   $user_id = (int) $user->ID;
   $author_id = (int) get_post_field('post_author', $product_id);
